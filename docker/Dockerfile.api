@@ -1,0 +1,33 @@
+From golang:latest
+
+ENV LD_LIBRARY_PATH /opt/libtorch/lib:${LD_LIBRARY_PATH}
+ENV PKG github.com/shunk031/libtorch-gin-api-server
+ENV CGO_ENABLED 1
+
+WORKDIR /opt
+
+RUN apt-get update && apt-get install -y \
+    unzip && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN wget -q https://download.pytorch.org/libtorch/cpu/libtorch-shared-with-deps-latest.zip && \
+    unzip libtorch-shared-with-deps-latest.zip && \
+    rm -f libtorch-shared-with-deps-latest.zip && \
+    echo "/opt/libtorch/lib" >> /etc/ld.so.conf.d/libtorch.conf && ldconfig
+
+
+
+COPY . /go/src/${PKG}
+WORKDIR /go/src/${PKG}
+
+RUN wget -q https://s3.amazonaws.com/deep-learning-models/image-models/imagenet_class_index.json && \
+    mv imagenet_class_index.json /go/src/${PKG}/assets
+
+RUN go get -u github.com/golang/dep/cmd/dep && \
+    go get -u github.com/codegangsta/gin && \
+    dep ensure -vendor-only -v
+
+EXPOSE 5000
+
+CMD ["gin", "-i", "run"]

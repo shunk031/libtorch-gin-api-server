@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    volumes:
+      - .:/go/src/github.com/shunk031/libtorch-gin-api-server
+    ports:
+      - 5000:5000
+    tty:
+      true
