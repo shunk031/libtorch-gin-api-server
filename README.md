@@ -16,3 +16,7 @@ $ python convert_to_torch_script_via_tracing.py
 ```shell
 $ docker-compose up api
 ```
+
+## Credits
+
+Parts of the implementation is borrowed from [rai-project/go-pytorch](https://github.com/rai-project/go-pytorch).
