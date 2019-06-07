@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"bytes"
-	"fmt"
 	"image"
 	"log"
 
@@ -58,7 +57,6 @@ func PredictProba(c *gin.Context, model *predictor.Predictor, categories map[int
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(pred)
 	maxIdx := helpers.Argmax(pred)
 	c.JSON(200, domains.PredictResult{
 		Desc:  categories[maxIdx][1],
