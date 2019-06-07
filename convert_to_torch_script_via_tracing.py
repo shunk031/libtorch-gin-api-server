@@ -6,6 +6,9 @@ def main():
 
     # An instance of your model.
     model = resnet50(pretrained=True)
+    # !!! YOU SHOULD CHANGE MODEL TO EVAL MODE !!!
+    model.eval()
+
     # An example input you would normally provide to your model's froward() method.
     example = torch.rand(1, 3, 224, 224)
 
