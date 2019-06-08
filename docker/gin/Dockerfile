@@ -16,13 +16,8 @@ RUN wget -q https://download.pytorch.org/libtorch/cpu/libtorch-shared-with-deps-
     rm -f libtorch-shared-with-deps-latest.zip && \
     echo "/opt/libtorch/lib" >> /etc/ld.so.conf.d/libtorch.conf && ldconfig
 
-
-
 COPY . /go/src/${PKG}
 WORKDIR /go/src/${PKG}
-
-RUN wget -q https://s3.amazonaws.com/deep-learning-models/image-models/imagenet_class_index.json && \
-    mv imagenet_class_index.json /go/src/${PKG}/assets
 
 RUN go get -u github.com/golang/dep/cmd/dep && \
     go get -u github.com/codegangsta/gin && \

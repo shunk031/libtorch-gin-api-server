@@ -1,13 +1,20 @@
 version: '3'
 
 services:
-  api:
+  gin:
     build:
       context: .
-      dockerfile: docker/Dockerfile.api
+      dockerfile: docker/gin/Dockerfile
     volumes:
       - .:/go/src/github.com/shunk031/libtorch-gin-api-server
     ports:
       - 5000:5000
-    tty:
-      true
+
+  flask:
+    build:
+      context: .
+      dockerfile: docker/flask/Dockerfile
+    volumes:
+      - .:/go/src/github.com/shunk031/libtorch-gin-api-server
+    ports:
+      - 5001:5001
