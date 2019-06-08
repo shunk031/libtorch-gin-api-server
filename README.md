@@ -1,6 +1,6 @@
 # High-speed Deep learning API Server with Libtorch (C++) and Gin (Golang)
 
-![MIT License](https://img.shields.io/github/license/shunk031/libtorch-gin-api-server.svg)
+[![GitHub license](https://img.shields.io/github/license/shunk031/libtorch-gin-api-server.svg)](https://github.com/shunk031/libtorch-gin-api-server/blob/master/LICENSE)
 ![Golang 1.9](https://img.shields.io/badge/golang-1.9%2B-blue.svg)
 ![Python 3.7](https://img.shields.io/badge/python-3.7%2B-brightgreen.svg)
 
